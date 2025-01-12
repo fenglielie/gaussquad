@@ -3,17 +3,17 @@ clear;
 close all;
 
 func = @(n) gausslegendre(n);
-func_data = @(n) deal(1,2*n-1);
+args = @(n) deal(1,2*n-1);
 
 % func = @(n) gausslobatto(n);
-% func_data = @(n) deal(2,2*n-3);
+% args = @(n) deal(2,2*n-3);
 
-nRange = 2:10;
+nRange = 2:15;
 allPassed = true;
 
 for n = nRange
     [x, w] = func(n);
-    [n_min,n_max] = func_data(n);
+    [n_min,n_max] = args(n);
 
     fprintf('n = %d\n', n);
     fprintf('Nodes:   ');
@@ -21,7 +21,7 @@ for n = nRange
     fprintf('Weights: ');
     disp(mat2str(w));
     disp(' ')
- 
+
     for k = n_min:(n_max+1)
         f = @(x) x.^k;
 
