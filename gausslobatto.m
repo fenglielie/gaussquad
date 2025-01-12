@@ -28,7 +28,7 @@ function [x, w] = gausslobatto(n)
             L(:, k+1) = (2 * k - 1) / k * x .* L(:, k) - (k - 1) / k * L(:, k-1);
         end
 
-        % q_n(x) = (1-x^2) p_{n-1}'(x) = -(n-1)n [x * p_{n-1}(x) - p_{n-2}(x)]
+        % q_n(x) = (1-x^2) p_{n-1}'(x) = -(n-1) * [x * p_{n-1}(x) - p_{n-2}(x)]
         % q_n'(x) = -(n-1)n * p_{n-1}(x)
         dx = (x .* L(:, n) - L(:, n-1)) ./ (n * L(:, n));
         x = x - dx;
