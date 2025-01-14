@@ -7,8 +7,6 @@ function [x, w] = gausslobatto(n)
     %   x - Nodes in [-1,1], size(x) = [n,1].
     %   w - Weights, size(w) = [n,1].
 
-    % Reference: https://ww2.mathworks.cn/matlabcentral/fileexchange/4775-legende-gauss-lobatto-nodes-and-weights?s_tid=srchtitle_support_results_3_Gauss%2520Lobatto
-
     validateattributes(n, {'numeric'}, {'integer', 'nonnegative', '>=', 2});
 
     % [p_0(x), p_1(x), ..., p_{n-1}(x)]

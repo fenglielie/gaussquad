@@ -7,9 +7,7 @@ function [x, w] = gausslegendre(n)
     %   x - Nodes in [-1,1], size(x) = [n,1].
     %   w - Weights, size(w) = [n,1].
 
-    % Reference: https://ww2.mathworks.cn/matlabcentral/fileexchange/4540-legendre-gauss-quadrature-weights-and-nodes?s_tid=srchtitle_support_results_4_Gauss%20Lobatto
-
-    validateattributes(n, {'numeric'}, {'integer', 'nonnegative'});
+    validateattributes(n, {'numeric'}, {'integer', 'nonnegative', '>=', 1});
 
     % [p_0(x), p_1(x), ..., p_n(x)]
     L = zeros(n, n+1);
