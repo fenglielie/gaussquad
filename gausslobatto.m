@@ -31,7 +31,7 @@ function [x, w] = gausslobatto(n)
         dx = (x .* L(:, n) - L(:, n-1)) ./ (n * L(:, n));
         x = x - dx;
 
-        if max(dx) < eps
+        if max(abs(dx)) < eps
             break
         end
     end

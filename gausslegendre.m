@@ -7,7 +7,7 @@ function [x, w] = gausslegendre(n)
     %   x - Nodes in [-1,1], size(x) = [n,1].
     %   w - Weights, size(w) = [n,1].
 
-    validateattributes(n, {'numeric'}, {'integer', 'nonnegative', '>=', 1});
+    validateattributes(n, {'numeric'}, {'integer', 'nonnegative', '>=', 2});
 
     % [p_0(x), p_1(x), ..., p_n(x)]
     L = zeros(n, n+1);
@@ -33,7 +33,7 @@ function [x, w] = gausslegendre(n)
         dx = L(:, n+1) ./ dLn;
         x = x - dx;
 
-        if max(dx) < eps
+        if max(abs(dx)) < eps
             break
         end
     end
