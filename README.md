@@ -2,7 +2,7 @@
 
 ## Gauss-Legendre & Gauss-Lobatto Quadrature
 
-This library computes the **nodes** $\{x_i\}$ and **weights** $\{w_i\}$ for Gauss–Legendre and Gauss–Lobatto quadrature rules on the standard interval $[-1,1]$:
+This library computes the nodes $\{x_i\}$ and weights $\{w_i\}$ for Gauss–Legendre and Gauss–Lobatto quadrature rules on the standard interval $[-1,1]$:
 
 $$
 I(f) = \int_{-1}^1 f(x)\,dx \;\approx\; I_n(f) = \sum_{i=1}^n w_i f(x_i).
@@ -46,7 +46,7 @@ References
 
 ## Quadrature Wrapper
 
-The `Quad` class provides a convenient interface for evaluating integrals using the computed nodes $\{x_i\}$ and weights $\{w_i\}$:
+The `Quad` class provides a convenient interface for evaluating integrals using the computed nodes $\{x_i\}$ and weights $\{w_i\}$.
 
 $$
 I(f) = \int_{-1}^1 f(x)\,dx \;\approx\; \sum_{i=1}^n w_i f(x_i).
@@ -79,7 +79,6 @@ auto pi_df = [](double)   { return std::numbers::pi / 2; };
 double result = Quad(gausslegendre(5))
                     .transform(pi_f, pi_df)
                     .integrate([](double x) { return std::sin(x); });
-
 std::cout << "NInt(sin(x),{x,0,pi}) = " << result << "\n";
 ```
 
