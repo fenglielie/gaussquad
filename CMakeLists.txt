@@ -14,20 +14,22 @@ target_include_directories(gaussquad INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/inclu
 
 add_subdirectory(example)
 
-include(CTest)
-if(BUILD_TESTING)
-    include(FetchContent)
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    include(CTest)
+    if(BUILD_TESTING)
+        include(FetchContent)
 
-    FetchContent_Declare(
-        googletest
-        DOWNLOAD_EXTRACT_TIMESTAMP TRUE
-        URL https://github.com/google/googletest/releases/download/v1.17.0/googletest-1.17.0.tar.gz
-    )
+        FetchContent_Declare(
+            googletest
+            DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+            URL https://github.com/google/googletest/releases/download/v1.17.0/googletest-1.17.0.tar.gz
+        )
 
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-    set(BUILD_GMOCK OFF CACHE BOOL "" FORCE) # Disable GMock
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+        set(BUILD_GMOCK OFF CACHE BOOL "" FORCE) # Disable GMock
 
-    FetchContent_MakeAvailable(googletest)
+        FetchContent_MakeAvailable(googletest)
 
-    add_subdirectory(test)
+        add_subdirectory(test)
+    endif()
 endif()
