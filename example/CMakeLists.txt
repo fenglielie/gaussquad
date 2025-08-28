@@ -1,6 +1,7 @@
-add_executable(gaussquad_example)
-zero_get_files(tmp .)
-target_sources(gaussquad_example PRIVATE ${tmp})
-target_link_libraries(gaussquad_example PRIVATE gaussquad)
+add_executable(quad_example quad_example.cpp)
+target_link_libraries(quad_example PRIVATE gaussquad)
+zero_check_target(quad_example)
 
-zero_check_target(gaussquad_example)
+add_executable(quad3_example quad3_example.cpp)
+target_link_libraries(quad3_example PRIVATE gaussquad)
+zero_check_target(quad3_example)
