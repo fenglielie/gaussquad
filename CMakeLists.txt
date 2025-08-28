@@ -10,7 +10,10 @@ zero_setup()
 zero_check()
 
 add_library(gaussquad INTERFACE)
-target_include_directories(gaussquad INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(gaussquad::gaussquad ALIAS gaussquad)
+target_include_directories(gaussquad INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>)
 
 add_subdirectory(example)
 
@@ -27,9 +30,17 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
         set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
         set(BUILD_GMOCK OFF CACHE BOOL "" FORCE) # Disable GMock
+        set(INSTALL_GTEST OFF CACHE BOOL "" FORCE) # Disable install gtest
 
         FetchContent_MakeAvailable(googletest)
 
         add_subdirectory(test)
     endif()
 endif()
+
+install(TARGETS gaussquad EXPORT gaussquadTargets)
+install(EXPORT gaussquadTargets
+    FILE gaussquadConfig.cmake
+    NAMESPACE gaussquad::
+    DESTINATION lib/cmake/gaussquad)
+install(DIRECTORY include/gaussquad DESTINATION include)
