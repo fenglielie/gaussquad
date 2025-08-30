@@ -5,7 +5,7 @@
 This library computes the nodes $\{x_i\}$ and weights $\{w_i\}$ for Gauss–Legendre and Gauss–Lobatto quadrature rules on the standard interval $[-1,1]$:
 
 $$
-I(f) = \int_{-1}^1 f(x)\,dx \;\approx\; I_n(f) = \sum_{i=1}^n w_i f(x_i).
+I(f) = \int_{-1}^1 f(x) dx \approx I_n(f) = \sum_{i=1}^n w_i f(x_i).
 $$
 
 Function Declarations
@@ -49,7 +49,7 @@ References
 The `Quad` class provides a convenient interface for evaluating integrals using the computed nodes $\{x_i\}$ and weights $\{w_i\}$.
 
 $$
-I(f) = \int_{-1}^1 f(x)\,dx \;\approx\; \sum_{i=1}^n w_i f(x_i).
+I(f) = \int_{-1}^1 f(x) dx \approx \sum_{i=1}^n w_i f(x_i).
 $$
 
 Example
@@ -64,9 +64,9 @@ std::cout << "NInt(x^2,{x,-1,1}) = " << result << "\n";
 Quadrature on a general interval $\Omega = [a,b]$ can be obtained by a change of variables $y = h(x)$ mapping $[-1,1] \to \Omega$:
 
 $$
-\int_\Omega g(y)\,dy
-= \int_{-1}^1 g(h(x))\,h'(x)\,dx
-\;\approx\; \sum_{i=1}^n w_i\,h'(x_i)\,g(h(x_i)).
+\int_\Omega g(y)dy
+= \int_{-1}^1 g(h(x)) h'(x) dx
+\approx \sum_{i=1}^n w_i h'(x_i) g(h(x_i)).
 $$
 
 Example: Integration $g(y) = \sin(y)$ on $[0,\pi]$.
